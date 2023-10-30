@@ -11,7 +11,7 @@ I am standing on the shoulders of giants. These are:
 
 You can find the paper:
 http://jocbs.org/index.php/jocbs/article/view/236
-(Use at your own risk, this website is in fact not http secure.)
+(Use at your own risk, this website is not http secure.)
 
 * The Pali text society, who have maintained the academic standard texts for the Pali canon
 
