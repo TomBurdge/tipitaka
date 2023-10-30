@@ -42,6 +42,9 @@ def string_to_text(content):
 
 
 def remove_patterns(s):
+    # Remove words which are all capitals
+    s = re.sub(r"\b[A-Z]+\b", "", s)
+
     # Remove anything inside two brackets
     s = re.sub(r"\[.*?\]", "", s)
 
@@ -51,6 +54,7 @@ def remove_patterns(s):
     # Remove numbers
     s = re.sub(r"\d+", "", s)
 
+    # remove punctuation
     s = re.sub(f"[{re.escape(string.punctuation)}]", "", s)
 
     return s.strip()
