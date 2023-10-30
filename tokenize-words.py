@@ -2,8 +2,6 @@ import os
 from collections import Counter
 
 import polars as pl
-
-# nltk.download("punkt")
 from nltk.tokenize import word_tokenize
 from tqdm import tqdm
 
@@ -42,7 +40,7 @@ if __name__ == "__main__":
 
         text = txt_to_text(file)
         # risky new code - getting the English stuff at the start of pu
-        text = text.split("htm")[-1]
+        text = text.split("further information ")[-1]
 
         tokens = tokenize_text(text)
         word_counts = Counter(tokens)

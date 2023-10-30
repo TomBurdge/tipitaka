@@ -2,6 +2,8 @@ import os
 
 import altair as alt
 import polars as pl
+
+# from nltk.corpus import words
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline
@@ -13,10 +15,12 @@ if __name__ == "__main__":
     client = DuckbClient()
     df = client.execute_sql_string("SELECT * FROM tipitaka_preprocessed").pl()
 
+    # words = [column for column in df.columns if column in set(words.words())]
+
     kmeans_pipeline = Pipeline(
         [
             ("scaler", StandardScaler()),
-            ("pca", PCA(n_components=0.85)),  # PCA retaining 95% of variance
+            # ("pca", PCA(n_components=0.95)),  # PCA retaining 85% of variance
             ("dbscan", KMeans(n_clusters=2)),
         ]
     )
