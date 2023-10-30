@@ -5,8 +5,21 @@ description = "Project Description"
 authors = ["Authors Names"]
 
 [tool.poetry.dependencies]
-python = "3.10.*"
-pandas = "^1"
+python = "3.11.*"
+pandas = "^2"
+duckdb = "^0.9.1"
+chardet = "^5.2.0"
+beautifulsoup4 = "^4.12.2"
+sktime = "^0.24.0"
+tsfresh = "^0.20.1"
+nltk = "^3.8.1"
+scikit-learn = "^1.3.2"
+numpy = "^1.26.1"
+polars = "^0.19.11"
+pyarrow = "^13.0.0"
+tqdm = "^4.66.1"
+altair-viewer = "^0.4.0"
+altair = "^5"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
