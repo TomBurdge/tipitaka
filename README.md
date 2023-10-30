@@ -31,7 +31,7 @@ There are still some English language words passing through to the final stage. 
 Although this is a personal and academic project, the repository reflects some of my personal preferences for data and machine learning engineering:
 * KISS - use object-oriented programming, distributed computing, and cloud computing where appropriate.
 * With modern open source libraries, united by pyarrow, high-performance python is possible on a single machine.
-* Open source tools and inexpensive cloud services for horizontal and vertical scaling.
+* Open source tools and inexpensive cloud services for horizontal and vertical scaling (this, of course, changes for non-personal projects).
 * Pre-commit and Makefiles for ease of setup and quality control (some of this is a little messy, and when working on other projects I would usually use CI/CD)
 
 The data for this project all originates in open-source.
