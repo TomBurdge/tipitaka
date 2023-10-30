@@ -23,6 +23,8 @@ My aims are to:
 
 Project status:
 * Data engineering - I have made a multi-zone data-model, which processes the data to be ingested for machine learning.
+* For clustering, I will use an open-source tool `Metaflow` alongside AWS services (S3 & Batch). Unfortunately, this will make cloning and replicating the results from the directory more difficult. But the advantages of convenient horizontal and vertical scaling is too great.
+* I will finish with a writeup of my results. Hopefully, this will one day be published...
 
 
 There are still some English language words passing through to the final stage. I will correct this before I begin performing extensive clustering (initial clustering results, however, look promising).
