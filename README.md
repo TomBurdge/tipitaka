@@ -1,12 +1,12 @@
 # tipitaka
 
-From 2021-2022 I studied at the University of Oxford.
+From 2021-2022 I studied Buddhist Studies at the University of Oxford.
 
 My plan for my final research output had been to perform clustering on the entirety of the Pali canon.
-Life took a different course. I realised that I was much more interested in data and software engineering than intensive study of Classical Chinese and Pali.
+Life took a different course. I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
 
 But now, I am returning to this project.
-I am standing on the shoulders of giants. These are:
+We all stand on the shoulders of giants. For this project, most notable are:
 * Dan Zigmond, who performed the first computational analysis of the Pali canon in R.
 
 You can find the paper:
