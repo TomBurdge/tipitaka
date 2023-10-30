@@ -1,4 +1,4 @@
-from .duckdb_client import DuckbClient
-from .utils import list_files_recursive
+from parse_dict import parse_css
+from utils import DuckbClient, list_files_recursive
 
-__all__ = ["list_files_recursive", "DuckbClient"]
+__all__ = ["list_files_recursive", "DuckbClient", "parse_css"]
