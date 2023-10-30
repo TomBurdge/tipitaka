@@ -14,6 +14,7 @@ http://jocbs.org/index.php/jocbs/article/view/236
 (Use at your own risk, this website is not http secure.)
 
 * The Pali text society, who have maintained the academic standard texts for the Pali canon
+* github's digitalpalidictionary and vpnry, who have maintained an easy access Pali dictionary.
 
 My aims are to:
 * Replicate Dan Zigmond's results with Python.
@@ -32,10 +33,14 @@ There are still some English language words passing through to the clean zone. I
 (Initial clustering results look promising. There are some serious issues with the number of features and overfitting, but the research still reflects the results being replicated. I am planning to take a look at the original R findings and checking where in the ML workflow PCA is implemented).
 
 
+Some of the code is still a little messy.
+There are quite a few files in the base directory. I am iterating through this quickly and will make a repeatable flow at a later stage.
+
 Although this is a personal and academic project, the repository reflects some of my personal preferences for data and machine learning engineering:
 * KISS - use object-oriented programming, distributed computing, and cloud computing where appropriate.
 * With modern open source libraries, united by pyarrow, high-performance python is possible on a single machine.
 * Open source tools and inexpensive cloud services for horizontal and vertical scaling (this, of course, changes for non-personal projects).
 * Pre-commit and Makefiles for ease of setup and quality control (some of this is a little messy, and when working on other projects I would usually use CI/CD)
+* Minimal notebooks. Jupyter Notebooks are great, particularly for learning and instruction. For productive projects with repateable code, I tend to keep away from them.
 
 The data for this project all originates in open-source.
