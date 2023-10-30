@@ -28,7 +28,7 @@ Unfortunately, this will make cloning and replicating the results from the direc
 * I will finish with a writeup of my results. Hopefully, this will one day be published...
 
 
-There are still some English language words passing through to the final stage. I will correct this before I begin performing extensive clustering.
+There are still some English language words passing through to the clean zone. It is somewhat precarious to remove English words without also removing Pali words. I will correct this before I begin performing extensive clustering.
 (Initial clustering results look promising. There are some serious issues with the number of features and overfitting, but the research still reflects the results being replicated. I am planning to take a look at the original R findings and checking where in the ML workflow PCA is implemented).
 
 
