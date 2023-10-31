@@ -26,7 +26,7 @@ My aims are to:
 Project status:
 * Data engineering - I have made a multi-zone data-model, which processes the data to be ingested for machine learning.
 * For clustering, I will use an open-source tool `Metaflow` alongside AWS services (S3 & Batch).
-Unfortunately, this will make cloning and replicating the results from the directory more difficult. MetaFlow uses Anaconda and this repo generally uses Poetry, and I will not share the terraform files on this repo as I use the resources across different projects (but, all I have done is minorly changed wtanner's personal metaflow files - big thank you to him). But the advantages of convenient horizontal and vertical scaling is too great.
+Unfortunately, this will make cloning and replicating the results from the directory more difficult. I will not share the terraform files on this repo as I use the resources across different projects (but, all I have done is minorly changed wtanner's personal terraform files - big thank you to him). The advantages of horizontal/vertical scaling and repeatable machine learning DAGs are enormous, which Metaflow enables.
 * I will finish with a writeup of my results. Hopefully, this will one day be published...
 
 
