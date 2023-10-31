@@ -6,15 +6,16 @@ My plan for my final research output had been to perform clustering on the entir
 Life took a different course. I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
 
 But now, I am returning to this project.
-We all stand on the shoulders of giants. For this project, most notable are:
+I am still interested in performing NLP on the enormous Pali canon (3x the length of the King James Bible).
+
+For this project, I am building on the work of:
 * Dan Zigmond, who performed the first computational analysis of the Pali canon in R.
 
 You can find the paper:
 http://jocbs.org/index.php/jocbs/article/view/236
 (Use at your own risk, this website is not http secure.)
 
-* The Pali text society, who have maintained the academic standard texts for the Pali canon
-* github's digitalpalidictionary and vpnry, who have maintained an easy access Pali dictionary.
+* The Pali text society, who have maintained the academic standard editions for the Pali canon.
 
 My aims are to:
 * Replicate Dan Zigmond's results with Python.
@@ -29,18 +30,18 @@ Unfortunately, this will make cloning and replicating the results from the direc
 * I will finish with a writeup of my results. Hopefully, this will one day be published...
 
 
-There are still some English language words passing through to the clean zone. It is somewhat precarious to remove English words without also removing Pali words. I am planning to make a database of a Pali words dictionary, although this is non-trivial. I will correct this before I begin performing extensive clustering.
-(Initial clustering results look promising. There are some serious issues with the number of features and overfitting, but the research still reflects the results being replicated. I am planning to take a look at the original R findings and checking where in the ML workflow PCA is implemented).
-
-
 Some of the code is still a little messy.
 There are quite a few files in the base directory. I am iterating through this quickly and will make a repeatable flow at a later stage.
 
 Although this is a personal and academic project, the repository reflects some of my personal preferences for data and machine learning engineering:
-* KISS - use object-oriented programming, distributed computing, and cloud computing where appropriate.
+* KISS - use object-oriented programming, distributed computing, nuanced database schemas and cloud computing _where appropriate_.
 * With modern open source libraries, united by pyarrow, high-performance python is possible on a single machine.
-* Open source tools and inexpensive cloud services for horizontal and vertical scaling (this, of course, changes for non-personal projects).
-* Pre-commit and Makefiles for ease of setup and quality control (some of this is a little messy, and when working on other projects I would usually use CI/CD)
+* Open source tools and inexpensive cloud services for horizontal and vertical scaling.
+* Pre-commit and Makefiles for ease of setup and code quality control (some of this is a little messy, and when working on other projects I would usually use CI/CD).
 * Minimal notebooks. Jupyter Notebooks are great, particularly for learning and instruction. For productive projects with repateable code, I tend to keep away from them.
 
 The data for this project all originates in open-source.
+
+
+ingest -> tokenize-words -> clean -> preprocess -> kmeans
+pre-raw -> raw -> curated -> staging -> clean
