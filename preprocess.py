@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # The 1,000 words with the highest average (relative) frequency across all volumes
     # of the Canon are selected as features.
     top_1000_words = (
-        lf.group_by(["words", "basket"])
+        lf.group_by("words")
         .agg(pl.col("frequencies").sum())
         .sort("frequencies", descending=True)
         .limit(1000)
