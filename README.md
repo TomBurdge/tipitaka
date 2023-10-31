@@ -30,8 +30,17 @@ Unfortunately, this will make cloning and replicating the results from the direc
 * I will finish with a writeup of my results. Hopefully, this will one day be published...
 
 
-Some of the code is still a little messy.
-There are quite a few files in the base directory. I am iterating through this quickly and will make a repeatable flow at a later stage.
+Project status:
+
+Currently I am refactoring the ETL (often called 'preprocessing' by data scientists) to work with MetaFLow.
+
+
+I have performed some preliminary clustering on the PTS Pali canon, which looks promising.
+
+After the refactor, I am looking to:
+* Build an ETL pipeline which loads the Vipassana edition data.
+* Replicate Dan Zigmond's Agglomerative Clustering and visualisation in python (KMeans replication is completed).
+* Perform a computational comparison of the Pali Text Society and Vipassana Edition Pali Canons.
 
 Although this is a personal and academic project, the repository reflects some of my personal preferences for data and machine learning engineering:
 * KISS - use object-oriented programming, distributed computing, nuanced database schemas and cloud computing _where appropriate_.
