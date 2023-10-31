@@ -33,8 +33,6 @@ Unfortunately, this will make cloning and replicating the results from the direc
 * I will finish with a writeup of my results. Hopefully, this will one day be published...
 
 
-Project status:
-
 Currently I am refactoring the ETL (often called 'preprocessing' by data scientists) to work with MetaFLow.
 
 
