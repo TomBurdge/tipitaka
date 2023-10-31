@@ -3,7 +3,10 @@
 From 2021-2022 I studied Buddhist Studies at the University of Oxford.
 
 My plan for my final research output had been to perform clustering on the entirety of the Pali canon.
-Life took a different course. I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
+
+Life took a different course. 
+
+I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
 
 But now, I am returning to this project.
 I am still interested in performing NLP on the enormous Pali canon (3x the length of the King James Bible).
