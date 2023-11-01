@@ -1,5 +1,5 @@
-from .parse_dict import parse_css
-from .parsing import (
+from .parse import (
+    count_words,
     html_to_text,
     relative_frequency,
     remove_patterns,
@@ -7,18 +7,13 @@ from .parsing import (
     tokenize_text,
     txt_to_text,
 )
-from .utils import DuckbClient, list_files_recursive, unzip_file, write_text
 
 __all__ = [
-    "list_files_recursive",
-    "DuckbClient",
-    "parse_css",
     "html_to_text",
     "remove_patterns",
     "string_to_text",
-    "unzip_file",
     "relative_frequency",
-    "write_text",
     "txt_to_text",
+    "count_words",
     "tokenize_text",
 ]
