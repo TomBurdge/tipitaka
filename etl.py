@@ -204,6 +204,7 @@ class ETLFlow(FlowSpec):
     def collect_baskets(self):
         from src import DuckbClient
 
+        # you can't pickle this client so it can't be passed between jobs and kept a singleton
         client = DuckbClient()
         self.lf = (
             client.execute_sql_string("""SELECT *, 'vin' as basket FROM vin""")
