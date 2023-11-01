@@ -3,7 +3,10 @@
 From 2021-2022 I studied Buddhist Studies at the University of Oxford.
 
 My plan for my final research output had been to perform clustering on the entirety of the Pali canon.
-Life took a different course. I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
+
+Life took a different course. 
+
+I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
 
 But now, I am returning to this project.
 I am still interested in performing NLP on the enormous Pali canon (3x the length of the King James Bible).
@@ -29,8 +32,6 @@ Project status:
 Unfortunately, this will make cloning and replicating the results from the directory more difficult. I will not share the terraform files on this repo as I use the resources across different projects (but, all I have done is minorly changed wtanner's personal terraform files - big thank you to him). The advantages of horizontal/vertical scaling and repeatable machine learning DAGs are enormous, which Metaflow enables.
 * I will finish with a writeup of my results. Hopefully, this will one day be published...
 
-
-Project status:
 
 Currently I am refactoring the ETL (often called 'preprocessing' by data scientists) to work with MetaFLow.
 
