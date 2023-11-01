@@ -158,11 +158,107 @@ class ETLFlow(FlowSpec):
     @step
     def join2(self, inputs):
         self.clean_file_names = [input.output_filename for input in inputs]
+        self.next(self.clean)
+
+    @step
+    def clean(self):
+        import os
+
+        from src import DuckbClient, list_files_recursive
+
+        # (unfortunately) DuckDB doesn't support multiple concurrent connections yet
+        # (there's somme interesting stuff going on in the buena vista project, which simulates postgresql
+        # but buena vista is fairly early stage)
+        # https://github.com/jwills/buenavista
+        # even if DuckDB did support this, I wouldn't want lots of concurrent connections and writes
+        # metaflow does not currently support branch specific concurrency (see their github issue #172)
+        # so, unfortunately there is a non-parallel for-loop
+        # fortunately, this is unlikely to be a bottleneck because parquet to duckdb is zero-copy
+
+        self.staging = os.path.join("data", "staging")
+
+        tipitaka = os.path.join(self.staging, "2_pali", "1_tipit")
+        baskets = ["vin", "sut", "abh"]
+
+        # aim - eliminate the recursive file finding by passing along the clean file names
+        # need to add a way to get the basket just from the string to do this
+        for i, basket in enumerate(baskets, 1):
+            basket_path = os.path.join(tipitaka, f"{str(i)}_{basket}")
+
+            files = list_files_recursive(basket_path)
+
+            # filter to only pts files
+            pts_basket = []
+            for file in files:
+                raw_filename = os.path.splitext(os.path.split(file)[1])[0]
+                if raw_filename.endswith("pu"):
+                    pts_basket.append(file)
+                else:
+                    continue
+
+            client = DuckbClient()
+            client.parquets_to_table(basket, pts_basket)
+        self.next(self.collect_baskets)
+
+    @step
+    def collect_baskets(self):
+        from src import DuckbClient
+
+        client = DuckbClient()
+        self.lf = (
+            client.execute_sql_string("""SELECT *, 'vin' as basket FROM vin""")
+            .pl()
+            .vstack(
+                client.execute_sql_string("""SELECT *, 'sut' as basket FROM sut""").pl()
+            )
+            .vstack(
+                client.execute_sql_string("""SELECT *, 'abh' as basket FROM abh""").pl()
+            )
+        ).lazy()
+
+        self.next(self.top_x_words)
+
+    @step
+    def top_x_words(self):
+        from polars import col
+
+        self.top_1000_words = (
+            self.lf.group_by("words")
+            .agg(col("frequencies").sum())
+            .sort("frequencies", descending=True)
+            .limit(1000)
+        )
+
+        self.next(self.filter_to_top_x)
+
+    @step
+    def filter_to_top_x(self):
+        from polars import col
+
+        self.df = (
+            self.lf.filter(
+                col("words").is_in(
+                    self.top_1000_words.select(col("words")).collect().to_series()
+                )
+            )
+            .collect()
+            .pivot(
+                index=["volume_name", "basket"], columns="words", values="frequencies"
+            )
+            .fill_null(0)
+        )
+
         self.next(self.end)
 
     @step
     def end(self):
-        print("finished")
+        from src import DuckbClient
+
+        client = DuckbClient()
+
+        client.execute_sql_string("DROP TABLE IF EXISTS tipitaka_preprocessed")
+
+        self.result = client.df_to_table("tipitaka_preprocessed", self.df)
 
 
 if __name__ == "__main__":
