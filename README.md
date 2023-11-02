@@ -18,24 +18,22 @@ This project draws inspiration from:
 
 ## Current Progress
 
-- **Data Engineering**: Developed a multi-zone data-model for preparing data for machine learning.
+- **Data Engineering**: Developed a multi-zone data-model for preparing data for machine learning. Ingested both pali text society and vipassana research institute data.
 - **Clustering**: Leveraging the open-source tool `Metaflow` in conjunction with AWS services (S3 & Batch).
   - Note: Cloning and replicating results may pose challenges due to this setup. The Terraform files won't be shared here, as I use the resources across various projects. However, modifications to wtanner's personal terraform files were minimal. Thanks to wtanner!
   - The potential for horizontal/vertical scaling and repeatable ML DAGs offered by Metaflow is substantial.
 - **Result Documentation**: Upon completion, a comprehensive analysis of my findings will be provided, with hopes of future publication.
 
 **Ongoing Tasks**:
-- Refactoring the ETL, which is frequently termed 'preprocessing' in the data science domain, for compatibility with Metaflow.
-- Preliminary clustering has been executed on the PTS Pali canon, yielding promising outcomes.
+- Replicating Dan Zigmond's clustering (KMeans and agglomerative clustering) results in python.
 
 **Next Steps**:
-1. Design an ETL pipeline for the Vipassana edition data.
-2. Replicate Dan Zigmond's Agglomerative Clustering and visualization using Python. (KMeans replication is already done).
-3. Conduct a computational comparison of the Pali Text Society and Vipassana Edition Pali Canons.
+1. Perform involved clustering on the Pali Text Society data.
+2. Conduct a computational comparison of the Pali Text Society and Vipassana Edition Pali Canons.
 
 ## Personal Notes
 
-Even though this is fundamentally an academic project, the repository encapsulates some of my personal inclinations regarding data and machine learning engineering:
+Even though this is an academic project, the repository encapsulates some of my personal inclinations regarding data and machine learning engineering:
 - **KISS Principle**: Implement OOP, distributed computing, intricate database schemas, and cloud computing _when necessary_.
 - **High-Performance Python**: Utilizing contemporary open-source libraries and pyarrow, python's efficiency can be significantly enhanced on a single machine.
 - **Scalability**: Leverage open-source tools and budget-friendly cloud services for both horizontal and vertical scaling.
