@@ -4,6 +4,9 @@ import altair as alt
 from metaflow import Flow
 from ulid import ULID
 
+# move to top directory
+os.chdir(os.path.join(os.getcwd(), "..", ".."))
+
 run = Flow("ClusterTrainFlow").latest_run
 
 plot_df = run["assign_labels"].task.data.plot_df
