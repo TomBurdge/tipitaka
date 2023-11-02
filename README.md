@@ -1,57 +1,45 @@
-# tipitaka
+# Tipitaka NLP Project
 
-From 2021-2022 I studied Buddhist Studies at the University of Oxford.
+During 2021-2022, I pursued Buddhist Studies at the University of Oxford. Initially, I aimed to perform clustering on the entirety of the Pali canon. However, my interest shifted more towards data and software engineering than academic study of Classical Chinese and Pali. Now, I've returned to this project, eager to perform NLP on the expansive Pali canon, which is roughly three times the length of the King James Bible.
 
-My plan for my final research output had been to perform clustering on the entirety of the Pali canon.
+## Background
 
-Life took a different course. 
+This project draws inspiration from:
+- **Dan Zigmond**, who undertook the first computational analysis of the Pali canon using R.
+  - [Read the paper](http://jocbs.org/index.php/jocbs/article/view/236)
+  - ⚠️ Note: Use the above link at your own risk; the website lacks HTTPS security.
+- **The Pali Text Society**, which has diligently upheld the academic standard editions of the Pali canon.
 
-I realised that I was much more interested in data and software engineering than intensive academic study of Classical Chinese and Pali.
+## Project Objectives
 
-But now, I am returning to this project.
-I am still interested in performing NLP on the enormous Pali canon (3x the length of the King James Bible).
+1. Replicate Dan Zigmond's results, but using Python.
+2. Conduct a more comprehensive clustering, exploring various models and parameters. Current techniques involve KMeans and a few basic similarity clustering techniques.
+3. Undertake the first computational comparison between the Vipassana Institute's and the Pali Text Society's editions of the Pali canon.
 
-For this project, I am building on the work of:
-* Dan Zigmond, who performed the first computational analysis of the Pali canon in R.
+## Current Progress
 
-You can find the paper:
-http://jocbs.org/index.php/jocbs/article/view/236
-(Use at your own risk, this website is not http secure.)
+- **Data Engineering**: Developed a multi-zone data-model for preparing data for machine learning.
+- **Clustering**: Leveraging the open-source tool `Metaflow` in conjunction with AWS services (S3 & Batch).
+  - Note: Cloning and replicating results may pose challenges due to this setup. The Terraform files won't be shared here, as I use the resources across various projects. However, modifications to wtanner's personal terraform files were minimal. Thanks to wtanner!
+  - The potential for horizontal/vertical scaling and repeatable ML DAGs offered by Metaflow is substantial.
+- **Result Documentation**: Upon completion, a comprehensive analysis of my findings will be provided, with hopes of future publication.
 
-* The Pali text society, who have maintained the academic standard editions for the Pali canon.
+**Ongoing Tasks**:
+- Refactoring the ETL, which is frequently termed 'preprocessing' in the data science domain, for compatibility with Metaflow.
+- Preliminary clustering has been executed on the PTS Pali canon, yielding promising outcomes.
 
-My aims are to:
-* Replicate Dan Zigmond's results with Python.
-* Perform more extensive clustering, with further models and parameters. So far, KMeans and some limited similarity clustering techniques have been performed.
-* Perform the first computational comparison between the Vipassana Institute and the Pali Text Society's editions of the Pali canon.
+**Next Steps**:
+1. Design an ETL pipeline for the Vipassana edition data.
+2. Replicate Dan Zigmond's Agglomerative Clustering and visualization using Python. (KMeans replication is already done).
+3. Conduct a computational comparison of the Pali Text Society and Vipassana Edition Pali Canons.
 
+## Personal Notes
 
-Project status:
-* Data engineering - I have made a multi-zone data-model, which processes the data to be ingested for machine learning.
-* For clustering, I will use an open-source tool `Metaflow` alongside AWS services (S3 & Batch).
-Unfortunately, this will make cloning and replicating the results from the directory more difficult. I will not share the terraform files on this repo as I use the resources across different projects (but, all I have done is minorly changed wtanner's personal terraform files - big thank you to him). The advantages of horizontal/vertical scaling and repeatable machine learning DAGs are enormous, which Metaflow enables.
-* I will finish with a writeup of my results. Hopefully, this will one day be published...
+Even though this is fundamentally an academic project, the repository encapsulates some of my personal inclinations regarding data and machine learning engineering:
+- **KISS Principle**: Implement OOP, distributed computing, intricate database schemas, and cloud computing _when necessary_.
+- **High-Performance Python**: Utilizing contemporary open-source libraries and pyarrow, python's efficiency can be significantly enhanced on a single machine.
+- **Scalability**: Leverage open-source tools and budget-friendly cloud services for both horizontal and vertical scaling.
+- **Code Quality Control**: Use pre-commit and Makefiles for a streamlined setup and maintaining code quality. Although some sections might seem a bit cluttered, in professional projects, I typically opt for CI/CD.
+- **Limited Use of Notebooks**: While Jupyter Notebooks excel for educational purposes and demonstrations, for repeatable code in result-driven projects, I prefer not to rely on them.
 
-
-Currently I am refactoring the ETL (often called 'preprocessing' by data scientists) to work with MetaFLow.
-
-
-I have performed some preliminary clustering on the PTS Pali canon, which looks promising.
-
-After the refactor, I am looking to:
-* Build an ETL pipeline which loads the Vipassana edition data.
-* Replicate Dan Zigmond's Agglomerative Clustering and visualisation in python (KMeans replication is completed).
-* Perform a computational comparison of the Pali Text Society and Vipassana Edition Pali Canons.
-
-Although this is a personal and academic project, the repository reflects some of my personal preferences for data and machine learning engineering:
-* KISS - use object-oriented programming, distributed computing, nuanced database schemas and cloud computing _where appropriate_.
-* With modern open source libraries, united by pyarrow, high-performance python is possible on a single machine.
-* Open source tools and inexpensive cloud services for horizontal and vertical scaling.
-* Pre-commit and Makefiles for ease of setup and code quality control (some of this is a little messy, and when working on other projects I would usually use CI/CD).
-* Minimal notebooks. Jupyter Notebooks are great, particularly for learning and instruction. For productive projects with repateable code, I tend to keep away from them.
-
-The data for this project all originates in open-source.
-
-
-ingest -> tokenize-words -> clean -> preprocess -> kmeans
-pre-raw -> raw -> curated -> staging -> clean
+All data used in this project is sourced from open-source platforms.
