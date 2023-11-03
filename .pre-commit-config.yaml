@@ -30,7 +30,7 @@
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
 -   repo: https://github.com/sqlfluff/sqlfluff
-    rev: '2.3.4'
+    rev: '2.3.5'
     hooks:
     -   id: sqlfluff-fix
     -   id: sqlfluff-lint
