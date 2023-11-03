@@ -4,12 +4,7 @@ from metaflow import FlowSpec, step
 class ClusterTrainFlow(FlowSpec):
     @step
     def start(self):
-        import os
-
         from src import DuckbClient
-
-        # move to top directory
-        os.chdir(os.path.join(os.getcwd(), "..", ".."))
 
         client = DuckbClient()
         self.df = client.execute_sql_string("SELECT * FROM tipitaka_preprocessed").pl()

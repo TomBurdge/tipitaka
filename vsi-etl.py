@@ -4,10 +4,8 @@ from metaflow import FlowSpec, step
 class ETLFlow(FlowSpec):
     @step
     def start(self):
-        import os
-
         # move to top directory
-        os.chdir(os.path.join(os.getcwd(), "..", ".."))
+        # os.chdir(os.path.join(os.getcwd(), "..", ".."))
 
         self.next(self.download_vri_tipitaka)
 
@@ -48,8 +46,22 @@ class ETLFlow(FlowSpec):
     def to_dataframe(self):
         import polars as pl
 
-        df = pl.from_pandas(self.data["tipitaka_long"])
-        print(df.select("book").unique().sort(by="book").to_series().to_list())
+        self.df = pl.from_pandas(self.data["tipitaka_long"])
+        print(self.df.head())
+
+        self.next(self.to_duckdb)
+
+    @step
+    def to_duckdb(self):
+        import os
+
+        print(os.getcwd())
+        from src import DuckbClient
+
+        client = DuckbClient()
+        client.execute_sql_string("DROP TABLE IF EXISTS vsi_tipitaka_preprocessed")
+
+        # self.result = client.df_to_table("vsi_tipitaka_preprocessed", self.df)
         self.next(self.end)
 
     @step
