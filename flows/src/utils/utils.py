@@ -1,6 +1,8 @@
 import os
 import zipfile
 
+import requests
+
 
 def list_files_recursive(directory):
     all_files = []
@@ -25,3 +27,11 @@ def write_text(text, txt_file_path):
     # Write the extracted text to a TXT file
     with open(txt_file_path, "w", encoding="utf-8") as txt_file:
         txt_file.write(text)
+
+
+def get_http(url: str):
+    url = "https://raw.githubusercontent.com/dangerzig/tipitaka/master/data/tipitaka_names.rda"
+    response = requests.get(url, allow_redirects=True)
+
+    response.raise_for_status()
+    return response.content

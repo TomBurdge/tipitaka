@@ -15,7 +15,7 @@ import zipfile
 
 import requests
 
-from .parse_dpd_css import parse_css
+from .parse.parse_dpd_css import parse_css
 
 PALI_ROMAN_CHARS = r"[ĀĪŪṀṂṆḌḶṚṢŚÑṄāīūṁṃṇḍḷṛṣśñṅA-Za-z]"
 
@@ -229,3 +229,22 @@ def dpd_to_sqlite_main(tab_file: str = "dpd.txt") -> None:
 
 if __name__ == "__main__":
     dpd_to_sqlite_main()
+
+    # Connect to the database (or create one if it doesn't exist)
+    conn = sqlite3.connect("dictionary.db")
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Execute the SQL command
+    cursor.execute("SELECT word FROM dictionary")
+
+    # Fetch all rows
+    rows = cursor.fetchall()
+
+    # Print the rows
+    for row in rows:
+        print(row)
+
+    # Close the connection
+    conn.close()

@@ -7,7 +7,7 @@ from .parsing import (
     tokenize_text,
     txt_to_text,
 )
-from .utils import DuckbClient, list_files_recursive, unzip_file, write_text
+from .utils import DuckbClient, get_http, list_files_recursive, unzip_file, write_text
 
 __all__ = [
     "list_files_recursive",
@@ -21,4 +21,5 @@ __all__ = [
     "write_text",
     "txt_to_text",
     "tokenize_text",
+    "get_http",
 ]

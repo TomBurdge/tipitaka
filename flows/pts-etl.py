@@ -8,9 +8,6 @@ class ETLFlow(FlowSpec):
 
         from src import unzip_file
 
-        # move to top directory
-        # os.chdir(os.path.join(os.getcwd(), "..", ".."))
-
         self.pre_raw = os.path.join("data", "pre-raw", "2_pali.zip")
         self.raw = os.path.join("data", "raw")
         self.curated = os.path.join("data", "curated")
