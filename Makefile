@@ -2,7 +2,7 @@ GLOBAL_PYTHON = $(shell which python3.10)
 LOCAL_PYTHON = ./.venv/bin/python
 LOCAL_PRE_COMMIT = ./.venv/lib/python*/site-packages/pre_commit
 
-setup: venv install pre-commit
+setup: venv install metaflow pre-commit
 
 venv: $(GLOBAL_PYTHON)
 	@echo "Creating .venv..."
@@ -28,6 +28,10 @@ pre-commit: ${LOCAL_PYTHON} ${LOCAL_PRE_COMMIT}
 		./.venv/bin/pre-commit install; \
 	fi
 	./.venv/bin/pre-commit autoupdate
+
+metaflow: ${LOCAL_PYTHON}
+	@echo "Configuring metaflow for aws services"
+	aws configure
 
 clean:
 	rm -rf .git/hooks
