@@ -30,8 +30,11 @@ def write_text(text, txt_file_path):
 
 
 def get_http(url: str):
-    url = "https://raw.githubusercontent.com/dangerzig/tipitaka/master/data/tipitaka_names.rda"
     response = requests.get(url, allow_redirects=True)
 
     response.raise_for_status()
     return response.content
+
+
+def decode_string(s):
+    return s.encode("latin1").decode("unicode_escape")
