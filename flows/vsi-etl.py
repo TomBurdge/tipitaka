@@ -54,12 +54,7 @@ class ETLFlow(FlowSpec):
             col("name").map_elements(lambda x: decode_string(x))
         ).with_columns(
             col("name").str.split(" ").list.first().alias("basket"),
-            col("name")
-            .str.split(" ")
-            .list.reverse()
-            .list.head(2)
-            .list.join(" ")
-            .alias("volume_name"),
+            col("name").str.split(" ").list.tail(2).list.join(" ").alias("volume_name"),
         )
 
         self.next(self.modify_schema)
