@@ -121,8 +121,10 @@ class ETLFlow(FlowSpec):
 
     @step
     def modify_schema(self, inputs):
+        from polars import exclude
+
         self.merge_artifacts(inputs, include=["df", "df_names"])
-        self.df = self.df.join(self.df_names, on="book")
+        self.df = self.df.join(self.df_names, on="book").with_columns(exclude("book"))
 
         self.next(self.to_duckdb)
 
