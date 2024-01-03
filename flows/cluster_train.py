@@ -1,13 +1,19 @@
-from metaflow import FlowSpec, step
+from metaflow import FlowSpec, Parameter, step
 
 
 class ClusterTrainFlow(FlowSpec):
+    table = Parameter(
+        "table",
+        default="vsi_tipitaka_preprocessed",
+        help="Clean table to get training data from",
+    )
+
     @step
     def start(self):
         from src import DuckbClient
 
         client = DuckbClient()
-        self.df = client.execute_sql_string("SELECT * FROM tipitaka_preprocessed").pl()
+        self.df = client.execute_sql_string(f"SELECT * FROM {self.table}").pl()
 
         self.next(self.exclude)
 
@@ -30,7 +36,7 @@ class ClusterTrainFlow(FlowSpec):
         transformer_pipeline = Pipeline(
             [
                 ("scaler", StandardScaler()),
-                ("pca", PCA(n_components=0.85)),  # PCA retaining 85% of variance
+                ("pca", PCA(n_components=0.95)),  # PCA retaining 85% of variance
                 # ("tsne", TSNE(3)),
             ]
         )
@@ -40,20 +46,20 @@ class ClusterTrainFlow(FlowSpec):
 
     @step
     def train(self):
-        from sklearn.cluster import HDBSCAN
+        from sklearn.cluster import KMeans
 
-        model = HDBSCAN(min_cluster_size=2)
+        model = KMeans(n_clusters=2)
         self.labels = model.fit_predict(self.X)
         self.next(self.assign_labels)
 
     @step
     def reduce_dimensions(self):
-        from sklearn.manifold import TSNE
+        from sklearn.decomposition import PCA
         from sklearn.pipeline import Pipeline
         from sklearn.preprocessing import StandardScaler
 
         two_components_pipeline = Pipeline(
-            [("scaler", StandardScaler()), ("tsne", TSNE())]
+            [("scaler", StandardScaler()), ("tsne", PCA(n_components=2))]
         )
 
         self.two_components = two_components_pipeline.fit_transform(self.data)
